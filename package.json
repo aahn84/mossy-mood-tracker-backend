@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aahn84/mossy-mood-tracker-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aahn84/mossy-mood-tracker-backend/issues"
+  },
+  "homepage": "https://github.com/aahn84/mossy-mood-tracker-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.14.12",
+    "pg": "^7.4.1"
+  }
+}
