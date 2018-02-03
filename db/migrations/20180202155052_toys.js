@@ -4,5 +4,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  knex.schema.dropTable('toys')
+  return knex.schema.dropTable('toys')
 };
