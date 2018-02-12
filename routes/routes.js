@@ -22,8 +22,11 @@ router.route('/users/:id')
 
 
 // TOYS Routes
-// app.get('/toys', )
-// app.get('/toys/:id', )
+router.route('/toys')
+  .get(mossyController.getAllToysCtrl)
+  
+router.route('/toys/:id')
+  .get(mossyController.getToyByIdCtrl)
 
 
 // FOODS Routes

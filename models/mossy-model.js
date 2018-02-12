@@ -17,6 +17,7 @@ const knex = require('../db.js')
 //   },
 // ]
 
+// USERS
 function getAllUsers() {
   return knex('users')
   // return users;
@@ -47,10 +48,33 @@ function createUser(first_name, last_name) {
 //
 // }
 
+// REPORTS
+
+
+
+// TOYS
+function getAllToys() {
+  return knex('toys')
+}
+
+function getToyById(id) {
+  return knex('toys')
+    .where('id', id)
+    .first()
+}
+
+// FOODS
+
+
+
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   // updateUser,
+
+  getAllToys,
+  getToyById,
 
 }
