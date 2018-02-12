@@ -15,10 +15,12 @@ router.route('/users/:id')
 
 
 // REPORTS Routes
-// app.get('/reports', )
-// app.get('/reports/:id', )
-// app.post('/reports', )
-// app.delete('/reports/:id', )
+router.route('/reports')
+  .get(mossyController.getAllReportsCtrl)
+  .post(mossyController.createReportCtrl)
+
+router.route('/reports/:id')
+  .get(mossyController.getReportByIdCtrl)
 
 
 // TOYS Routes

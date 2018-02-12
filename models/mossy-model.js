@@ -48,8 +48,28 @@ function createUser(first_name, last_name) {
 //
 // }
 
-// REPORTS
 
+// REPORTS
+function getAllReports() {
+  return knex('reports')
+}
+
+function getReportById(id) {
+  return knex('reports')
+    .where('id', id)
+    .first()
+}
+
+function createReport(mood, time_of_day, users_id, toys_id, foods_id) {
+  return knex('reports')
+    .insert({
+      mood,
+      time_of_day,
+      users_id,
+      toys_id,
+      foods_id
+    })
+}
 
 
 // TOYS
@@ -63,6 +83,7 @@ function getToyById(id) {
     .first()
 }
 
+
 // FOODS
 function getAllFoods() {
   return knex('foods')
@@ -75,13 +96,14 @@ function getFoodById(id) {
 }
 
 
-
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   // updateUser,
-
+  getAllReports,
+  getReportById,
+  createReport,
   getAllToys,
   getToyById,
   getAllFoods,

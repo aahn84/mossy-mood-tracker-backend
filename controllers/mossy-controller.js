@@ -37,7 +37,33 @@ const createUserCtrl = (req, res, next) => {
 
 
 // REPORTS
+const getAllReportsCtrl = (req, res, next) => {
+  mossyModel.getAllReports()
+    .then(reports => {
+      res.json(reports)
+    })
+    .catch(err => next(err))
+}
 
+const getReportByIdCtrl = (req, res, next) => {
+  const id = req.params.id
+
+  mossyModel.getReportById(id)
+    .then(report => {
+      res.json(report)
+    })
+    .catch(err => next(err))
+}
+
+const createReportCtrl = (req, res, next) => {
+  let {mood, time_of_day, users_id, toys_id, foods_id} = req.body
+
+  mossyModel.createReport(mood, time_of_day, users_id, toys_id, foods_id)
+  .then(report => {
+    res.json(report)
+  })
+  .catch(err => next(err))
+}
 
 
 // TOYS
@@ -84,7 +110,9 @@ module.exports = {
   getUserByIdCtrl,
   createUserCtrl,
   // updateUserCtrl,
-
+  getAllReportsCtrl,
+  getReportByIdCtrl,
+  createReportCtrl,
   getAllToysCtrl,
   getToyByIdCtrl,
   getAllFoodsCtrl,
