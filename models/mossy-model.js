@@ -1,9 +1,8 @@
+const knex = require('../db.js')
 // var shortid = require('shortid');
 //
 // console.log(shortid.generate());
 // //PPBqWA9
-
-const knex = require('../db.js')
 
 // let users = [
 //   {
@@ -27,7 +26,6 @@ function getUserById(id) {
   return knex('users')
     .where('id', id)
     .first()
-
   // const user = users.find(user => user.id === id)
   //
   // if (!user) {
@@ -37,9 +35,13 @@ function getUserById(id) {
   // return user;
 }
 
-// function createUser() {
-//
-// }
+function createUser(first_name, last_name) {
+  return knex('users')
+    .insert({
+      first_name,
+      last_name
+    })
+}
 
 // function updateUser(id) {
 //
@@ -48,7 +50,7 @@ function getUserById(id) {
 module.exports = {
   getAllUsers,
   getUserById,
-  // createUser,
+  createUser,
   // updateUser,
 
 }

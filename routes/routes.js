@@ -7,11 +7,11 @@ const mossyController = require('../controllers/mossy-controller')
 // USERS Routes
 router.route('/users')
   .get(mossyController.getAllUsersCtrl)
-  // .post(mossyController.createUserCtrl)
+  .post(mossyController.createUserCtrl)
 
 router.route('/users/:id')
   .get(mossyController.getUserByIdCtrl)
-  // .put(mossyController.updateUser)
+  // .put(mossyController.updateUserCtrl)
 
 
 // REPORTS Routes

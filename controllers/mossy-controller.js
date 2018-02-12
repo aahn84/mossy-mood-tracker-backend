@@ -1,29 +1,34 @@
 const mossyModel = require('../models/mossy-model')
 
 const getAllUsersCtrl = (req, res, next) => {
-  const users = mossyModel.getAllUsers()
-
-  res.status(200).json({data: users})
+  mossyModel.getAllUsers()
+    .then(users => {
+      res.json(users)
+      // res.status(200).json({data: users})
+    })
+    .catch(err => next(err))
 }
 
 const getUserByIdCtrl = (req, res, next) => {
   const id = req.params.id
 
-  if (!id) return next({status: 400, message: `Please provide a user ID`})
-
-  const user = mossyModel.getUserById(id)
-
-  if (user.error) {
-    let { error, message } = user;
-    return res.status(error).json({ error: { message }})
-  }
-
-  res.status(200).json({data: user})
+  mossyModel.getUserById(id)
+    .then(user => {
+      res.json(user)
+      // res.status(200).json({data: user})
+    })
+    .catch(err => next(err))
 }
 
-// const createUserCtrl = (req, res, next) => {
-//
-// }
+const createUserCtrl = (req, res, next) => {
+  let {first_name, last_name} = req.body
+
+  mossyModel.createUser(first_name, last_name)
+  .then(user => {
+    res.json(user)
+  })
+  .catch(err => next(err))
+}
 
 // const updateUserCtrl = (req, res, next) => {
 //
@@ -32,7 +37,7 @@ const getUserByIdCtrl = (req, res, next) => {
 module.exports = {
   getAllUsersCtrl,
   getUserByIdCtrl,
-  // createUserCtrl,
+  createUserCtrl,
   // updateUserCtrl,
-  //
+  
 }
