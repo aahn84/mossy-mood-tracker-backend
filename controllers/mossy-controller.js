@@ -60,7 +60,23 @@ const getToyByIdCtrl = (req, res, next) => {
 }
 
 // FOODS
+const getAllFoodsCtrl = (req, res, next) => {
+  mossyModel.getAllFoods()
+    .then(foods => {
+      res.json(foods)
+    })
+    .catch(err => next(err))
+}
 
+const getFoodByIdCtrl = (req, res, next) => {
+  const id = req.params.id
+
+  mossyModel.getToyById(id)
+    .then(food => {
+      res.json(food)
+    })
+    .catch(err => next(err))
+}
 
 
 module.exports = {
@@ -71,4 +87,6 @@ module.exports = {
 
   getAllToysCtrl,
   getToyByIdCtrl,
+  getAllFoodsCtrl,
+  getFoodByIdCtrl,
 }

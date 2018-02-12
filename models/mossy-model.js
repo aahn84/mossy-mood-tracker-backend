@@ -64,7 +64,15 @@ function getToyById(id) {
 }
 
 // FOODS
+function getAllFoods() {
+  return knex('foods')
+}
 
+function getFoodById(id) {
+  return knex('foods')
+    .where('id', id)
+    .first()
+}
 
 
 
@@ -76,5 +84,6 @@ module.exports = {
 
   getAllToys,
   getToyById,
-
+  getAllFoods,
+  getFoodById,
 }

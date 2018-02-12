@@ -24,14 +24,17 @@ router.route('/users/:id')
 // TOYS Routes
 router.route('/toys')
   .get(mossyController.getAllToysCtrl)
-  
+
 router.route('/toys/:id')
   .get(mossyController.getToyByIdCtrl)
 
 
 // FOODS Routes
-// app.get('/toys', )
-// app.get('/toys/:id', )
+router.route('/foods')
+  .get(mossyController.getAllFoodsCtrl)
+
+router.route('/foods/:id')
+  .get(mossyController.getFoodByIdCtrl)
 
 
  module.exports = router
