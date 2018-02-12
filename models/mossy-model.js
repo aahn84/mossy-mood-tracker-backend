@@ -19,11 +19,15 @@ const knex = require('../db.js')
 // ]
 
 function getAllUsers() {
-  // return users;
   return knex('users')
+  // return users;
 }
 
 function getUserById(id) {
+  return knex('users')
+    .where('id', id)
+    .first()
+
   // const user = users.find(user => user.id === id)
   //
   // if (!user) {
