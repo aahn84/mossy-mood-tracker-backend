@@ -5,18 +5,18 @@
 
 const knex = require('../db.js')
 
-let users = [
-  {
-    id: 1,
-    first_name: 'Angela',
-    last_name: 'Ahn'
-  },
-  {
-    id: 2,
-    first_name: 'Scott',
-    last_name: 'Hurlow'
-  },
-]
+// let users = [
+//   {
+//     id: 1,
+//     first_name: 'Angela',
+//     last_name: 'Ahn'
+//   },
+//   {
+//     id: 2,
+//     first_name: 'Scott',
+//     last_name: 'Hurlow'
+//   },
+// ]
 
 function getAllUsers() {
   // return users;
@@ -24,13 +24,13 @@ function getAllUsers() {
 }
 
 function getUserById(id) {
-  const user = users.find(user => user.id === id)
-
-  if (!user) {
-    return { error: 404, message: `User with id ${id} not found.`}
-  }
-
-  return user;
+  // const user = users.find(user => user.id === id)
+  //
+  // if (!user) {
+  //   return { error: 404, message: `User with id ${id} not found.`}
+  // }
+  //
+  // return user;
 }
 
 // function createUser() {
@@ -40,7 +40,6 @@ function getUserById(id) {
 // function updateUser(id) {
 //
 // }
-
 
 module.exports = {
   getAllUsers,
