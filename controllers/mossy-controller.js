@@ -31,10 +31,6 @@ const createUserCtrl = (req, res, next) => {
   .catch(err => next(err))
 }
 
-// const updateUserCtrl = (req, res, next) => {
-//
-// }
-
 
 // REPORTS
 const getAllReportsCtrl = (req, res, next) => {
@@ -109,7 +105,6 @@ module.exports = {
   getAllUsersCtrl,
   getUserByIdCtrl,
   createUserCtrl,
-  // updateUserCtrl,
   getAllReportsCtrl,
   getReportByIdCtrl,
   createReportCtrl,

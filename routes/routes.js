@@ -4,7 +4,7 @@ const router = express.Router()
 const mossyController = require('../controllers/mossy-controller')
 
 
-// USERS Routes
+// USERS
 router.route('/users')
   .get(mossyController.getAllUsersCtrl)
   .post(mossyController.createUserCtrl)
@@ -14,7 +14,7 @@ router.route('/users/:id')
   // .put(mossyController.updateUserCtrl)
 
 
-// REPORTS Routes
+// REPORTS
 router.route('/reports')
   .get(mossyController.getAllReportsCtrl)
   .post(mossyController.createReportCtrl)
@@ -23,7 +23,7 @@ router.route('/reports/:id')
   .get(mossyController.getReportByIdCtrl)
 
 
-// TOYS Routes
+// TOYS
 router.route('/toys')
   .get(mossyController.getAllToysCtrl)
 
@@ -31,7 +31,7 @@ router.route('/toys/:id')
   .get(mossyController.getToyByIdCtrl)
 
 
-// FOODS Routes
+// FOODS
 router.route('/foods')
   .get(mossyController.getAllFoodsCtrl)
 
@@ -39,4 +39,4 @@ router.route('/foods/:id')
   .get(mossyController.getFoodByIdCtrl)
 
 
- module.exports = router
+module.exports = router
