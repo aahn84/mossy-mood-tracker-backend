@@ -6,59 +6,37 @@ const cors = require('cors')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 // const mossyController = require('./controllers/mossy-controller')
-// const mossyRouter = require('./routes/mossy-routes.js')
-
+const mossyRouter = require('./routes/routes.js')
+app.use(mossyRouter)
 
 app.disable('x-powered-by')
 app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 
-// app.use(mossyRouter)
-
 
 // USERS Routes
-// app.get('users', (req, res, next) => {
-//
-// })
-//
-// app.get('users/:id', (req, res, next) => {
-//
-// })
-//
-// app.post('users/', (req, res, next) => {
-//
-// })
-//
-// app.delete('users:/id', (req, res, next) => {
-//
-// })
+// app.get('/users', mossyController.getAllUsersCtrl)
+// app.get('/users/:id', mossyController.getUserByIdCtrl)
+// app.post('/users/', mossyController.createUserCtrl)
+// app.delete('/users:/id', mossyController.updateUserCtrl)
+
 
 // REPORTS Routes
-// app.get('/reports', (req, res, next) => {
-//
-// })
-//
-// app.get('/reports/:id', (req, res, next) => {
-//
-// })
-//
-// app.post('/reports', (req, res, next) => {
-//
-// })
-//
-// app.delete('/reports/:id', (req, res, next) => {
-//
-// })
+// app.get('/reports', )
+// app.get('/reports/:id', )
+// app.post('/reports', )
+// app.delete('/reports/:id', )
+
 
 // TOYS Routes
-// app.get('/toys', (req, res, next) => {
-//
-// })
-//
-// app.get('/toys/:id', (req, res, next) => {
-//
-// })
+// app.get('/toys', )
+// app.get('/toys/:id', )
+
+
+// FOODS Routes
+// app.get('/toys', )
+// app.get('/toys/:id', )
 
 
 app.use((err, req, res, next) => {
@@ -76,4 +54,4 @@ app.listen(PORT, () => {
 })
 
 
-// module.exports = app
+module.exports = app

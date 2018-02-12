@@ -3,10 +3,8 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
-    connection: {
-      filename: process.env.DB_URL || 'postgres://localhost/mossy_mood_tracker_dev'
-    }
+    client: 'pg',
+    connection: 'postgres://localhost/mossy_mood_tracker'
   },
 
   production: {
