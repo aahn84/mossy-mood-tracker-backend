@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
     table.foreign('users_id').references('users.id')
     table.foreign('toys_id').references('toys.id')
     table.foreign('foods_id').references('foods.id')
+    table.timestamps(true, true)
   })
 };
 

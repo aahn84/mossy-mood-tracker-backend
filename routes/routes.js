@@ -14,15 +14,6 @@ router.route('/users/:id')
   // .put(mossyController.updateUserCtrl)
 
 
-// REPORTS
-router.route('/reports')
-  .get(mossyController.getAllReportsCtrl)
-  .post(mossyController.createReportCtrl)
-
-router.route('/reports/:id')
-  .get(mossyController.getReportByIdCtrl)
-
-
 // TOYS
 router.route('/toys')
   .get(mossyController.getAllToysCtrl)
@@ -38,5 +29,23 @@ router.route('/foods')
 router.route('/foods/:id')
   .get(mossyController.getFoodByIdCtrl)
 
+
+// REPORTS
+router.route('/reports')
+  .get(mossyController.getAllReportsCtrl)
+  .post(mossyController.createReportCtrl)
+
+router.route('/reports/:id')
+  .get(mossyController.getReportByIdCtrl)
+
+
+// REPORTS_TOYS
+router.route('/reports-toys')
+  .get(mossyController.getReportsToysCtrl)
+
+
+// REPORTS_FOODS
+router.route('/reports-foods')
+  .get(mossyController.getReportsFoodsCtrl)
 
 module.exports = router

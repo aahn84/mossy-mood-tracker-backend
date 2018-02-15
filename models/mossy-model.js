@@ -3,7 +3,6 @@ const knex = require('../db.js')
 // USERS
 function getAllUsers() {
   return knex('users')
-  // return users;
 }
 
 function getUserById(id) {
@@ -17,29 +16,6 @@ function createUser(first_name, last_name) {
     .insert({
       first_name,
       last_name
-    })
-}
-
-
-// REPORTS
-function getAllReports() {
-  return knex('reports')
-}
-
-function getReportById(id) {
-  return knex('reports')
-    .where('id', id)
-    .first()
-}
-
-function createReport(mood, time_of_day, users_id, toys_id, foods_id) {
-  return knex('reports')
-    .insert({
-      mood,
-      time_of_day,
-      users_id,
-      toys_id,
-      foods_id
     })
 }
 
@@ -68,15 +44,52 @@ function getFoodById(id) {
 }
 
 
+// REPORTS
+function getAllReports() {
+  return knex('reports')
+}
+
+function getReportById(id) {
+  return knex('reports')
+    .where('id', id)
+    .first()
+}
+
+function createReport(mood, time_of_day, users_id, toys_id, foods_id) {
+  return knex('reports')
+    .insert({
+      mood,
+      time_of_day,
+      users_id,
+      toys_id,
+      foods_id
+    })
+}
+
+
+// REPORTS_TOYS
+function getReportsToys() {
+  return knex('reports_toys')
+}
+
+
+// REPORTS_FOODS
+function getReportsFoods() {
+  return knex('reports_foods')
+}
+
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
-  getAllReports,
-  getReportById,
-  createReport,
   getAllToys,
   getToyById,
   getAllFoods,
   getFoodById,
+  getAllReports,
+  getReportById,
+  createReport,
+  getReportsToys,
+  getReportsFoods,
 }
