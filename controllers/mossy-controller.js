@@ -80,15 +80,35 @@ const getAllReportsCtrl = (req, res, next) => {
     .catch(err => next(err))
 }
 
-const getReportByIdCtrl = (req, res, next) => {
-  const id = req.params.id
+const getReportByUserIdCtrl = (req, res, next) => {
+  let {first_name, last_name} = req.body
 
-  mossyModel.getReportById(id)
+  mossyModel.getReportByUserId(first_name, last_name)
     .then(report => {
       res.json(report)
     })
     .catch(err => next(err))
 }
+
+// const getReportByIdCtrl = (req, res, next) => {
+//   const id = req.params.id
+//
+//   mossyModel.getReportById(id)
+//     .then(report => {
+//       res.json(report)
+//     })
+//     .catch(err => next(err))
+// }
+
+// const createUserCtrl = (req, res, next) => {
+//   let {first_name, last_name} = req.body
+//
+//   mossyModel.createUser(first_name, last_name)
+//   .then(user => {
+//     res.json(user)
+//   })
+//   .catch(err => next(err))
+// }
 
 const createReportCtrl = (req, res, next) => {
   let newReport = req.body
@@ -120,6 +140,15 @@ const getReportsFoodsCtrl = (req, res, next) => {
     .catch(err => next(err))
 }
 
+// AVERAGE MOODS
+const getAverageMoodsCtrl = (req, res, next) => {
+  mossyModel.getAverageMoods(userId)
+    .then(reports => {
+      res.json(reports)
+    })
+    .catch(err => next(err))
+}
+
 
 module.exports = {
   getAllUsersCtrl,
@@ -130,8 +159,10 @@ module.exports = {
   getAllFoodsCtrl,
   getFoodByIdCtrl,
   getAllReportsCtrl,
-  getReportByIdCtrl,
+  // getReportByIdCtrl,
+  getReportByUserIdCtrl,
   createReportCtrl,
   getReportsToysCtrl,
   getReportsFoodsCtrl,
+  getAverageMoodsCtrl,
 }

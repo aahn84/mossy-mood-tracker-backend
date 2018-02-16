@@ -50,10 +50,27 @@ function getAllReports() {
   .select('users.id as user_id', 'first_name', 'last_name', 'time_of_day', 'mood', 'toys.name as toys_id', 'foods.name as foods_id', 'reports.created_at');
 }
 
-function getReportById(id) {
-  return knex('reports')
-    .where('id', id)
-    .first()
+// function getReportById(id) {
+//   return knex('reports')
+//     .where('id', id)
+//     .first()
+// }
+
+function getReportByUserId(testUser) {
+  console.log(testUser)
+  return knex('users')
+    .where('first_name', testUser.first_name)
+    .andWhere('last_name', testUser.last_name)
+    .select('users.id').first()
+    .then(result => {
+      return knex('reports')
+        .where('users_id', result.id)
+    })
+}
+
+let testUser = {
+  first_name: "Angela",
+  last_name: "Ahn",
 }
 
 function createReport(newReport) {
@@ -93,6 +110,12 @@ function getReportsFoods() {
   return knex('reports_foods')
 }
 
+// AVERAGE MOODS
+function getAverageMoods() {
+  return knex('reports')
+}
+
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -102,8 +125,10 @@ module.exports = {
   getAllFoods,
   getFoodById,
   getAllReports,
-  getReportById,
+  // getReportById,
+  getReportByUserId,
   createReport,
   getReportsToys,
   getReportsFoods,
+  getAverageMoods,
 }

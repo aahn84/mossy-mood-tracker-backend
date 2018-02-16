@@ -36,7 +36,8 @@ router.route('/reports')
   .post(mossyController.createReportCtrl)
 
 router.route('/reports/:id')
-  .get(mossyController.getReportByIdCtrl)
+  // .get(mossyController.getReportByIdCtrl)
+  .get(mossyController.getReportByUserIdCtrl)
 
 
 // REPORTS_TOYS
@@ -47,5 +48,11 @@ router.route('/reports-toys')
 // REPORTS_FOODS
 router.route('/reports-foods')
   .get(mossyController.getReportsFoodsCtrl)
+
+
+// AVERAGE MOODS
+router.route('/averagemoods')
+  .get(mossyController.getAverageMoodsCtrl)
+
 
 module.exports = router
