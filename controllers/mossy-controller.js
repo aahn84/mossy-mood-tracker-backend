@@ -91,11 +91,11 @@ const getReportByIdCtrl = (req, res, next) => {
 }
 
 const createReportCtrl = (req, res, next) => {
-  let {mood, time_of_day, users_id, toys_id, foods_id} = req.body
+  let newReport = req.body
 
-  mossyModel.createReport(mood, time_of_day, users_id, toys_id, foods_id)
-  .then(report => {
-    res.json(report)
+  return mossyModel.createReport(newReport)
+  .then(result => {
+    res.status(201).json({ result })
   })
   .catch(err => next(err))
 }

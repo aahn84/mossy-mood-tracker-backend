@@ -11,12 +11,9 @@ function getUserById(id) {
     .first()
 }
 
-function createUser(first_name, last_name) {
+function createUser(newUser) {
   return knex('users')
-    .insert({
-      first_name,
-      last_name
-    })
+    .insert(newUser).returning('id');
 }
 
 
@@ -47,6 +44,10 @@ function getFoodById(id) {
 // REPORTS
 function getAllReports() {
   return knex('reports')
+  .join('users', 'users.id', '=', 'reports.users_id')
+  .join('toys', 'toys.id', '=', 'reports.toys_id')
+  .join('foods', 'foods.id', '=', 'reports.foods_id')
+  .select('users.id as user_id', 'first_name', 'last_name', 'time_of_day', 'mood', 'toys.name as toys_id', 'foods.name as foods_id', 'reports.created_at');
 }
 
 function getReportById(id) {
@@ -55,17 +56,31 @@ function getReportById(id) {
     .first()
 }
 
-function createReport(mood, time_of_day, users_id, toys_id, foods_id) {
-  return knex('reports')
-    .insert({
-      mood,
-      time_of_day,
-      users_id,
-      toys_id,
-      foods_id
-    })
+function createReport(newReport) {
+  if (newReport.users_id) {
+    return knex('reports').insert(newReport).returning('*');
+  } else {
+    return knex('users').where('first_name', newReport.firstName)
+      .andWhere('last_name', newReport.lastName).select('users.id').first()
+      .then(result => {
+        if (result) {
+          let { mood, time_of_day, toys_id, foods_id } = newReport
+          let updatedReport = { users_id: result.id, mood, time_of_day, toys_id, foods_id } ;
+          return createReport(updatedReport);
+        } else {
+          let userToCreate = {
+            first_name: newReport.firstName,
+            last_name: newReport.lastName
+          };
+          return createUser(userToCreate).then(result => {
+            let { mood, time_of_day, toys_id, foods_id } = newReport;
+            let updatedReport = { users_id: result[0], mood, time_of_day, toys_id, foods_id };
+            return createReport(updatedReport);
+          });
+        }
+      })
+  }
 }
-
 
 // REPORTS_TOYS
 function getReportsToys() {
@@ -77,7 +92,6 @@ function getReportsToys() {
 function getReportsFoods() {
   return knex('reports_foods')
 }
-
 
 module.exports = {
   getAllUsers,
