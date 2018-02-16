@@ -56,11 +56,11 @@ function getAllReports() {
 //     .first()
 // }
 
-function getReportByUserId(testUser) {
-  console.log(testUser)
+function getReportByUserId(user) {
+  console.log('didit?', user.first_name, user.last_name)
   return knex('users')
-    .where('first_name', testUser.first_name)
-    .andWhere('last_name', testUser.last_name)
+    .where('first_name', first_name)
+    .andWhere('last_name', last_name)
     .select('users.id').first()
     .then(result => {
       return knex('reports')
@@ -68,10 +68,10 @@ function getReportByUserId(testUser) {
     })
 }
 
-let testUser = {
-  first_name: "Angela",
-  last_name: "Ahn",
-}
+// let testUser = {
+//   first_name: "Angela",
+//   last_name: "Ahn",
+// }
 
 function createReport(newReport) {
   if (newReport.users_id) {
@@ -135,7 +135,6 @@ function getAverageMoods() {
         }
       })
 
-      console.log(moodCounts)
       return moodCounts;
     })
 }
