@@ -47,31 +47,19 @@ function getAllReports() {
   .join('users', 'users.id', '=', 'reports.users_id')
   .join('toys', 'toys.id', '=', 'reports.toys_id')
   .join('foods', 'foods.id', '=', 'reports.foods_id')
-  .select('users.id as user_id', 'first_name', 'last_name', 'time_of_day', 'mood', 'toys.name as toys_id', 'foods.name as foods_id', 'reports.created_at');
+  .select('reports.id','users.id as user_id', 'first_name', 'last_name', 'time_of_day', 'mood', 'toys.name as toys_id', 'foods.name as foods_id', 'reports.created_at')
+  .orderBy('reports.id', 'asc')
 }
 
-// function getReportById(id) {
-//   return knex('reports')
-//     .where('id', id)
-//     .first()
-// }
+getAllReports().then(res => {
+  console.log('res', res);
+})
 
-function getReportByUserId(user) {
-  console.log('didit?', user.first_name, user.last_name)
-  return knex('users')
-    .where('first_name', first_name)
-    .andWhere('last_name', last_name)
-    .select('users.id').first()
-    .then(result => {
-      return knex('reports')
-        .where('users_id', result.id)
-    })
+function getReportById(id) {
+  return knex('reports')
+    .where('id', id)
+    .first()
 }
-
-// let testUser = {
-//   first_name: "Angela",
-//   last_name: "Ahn",
-// }
 
 function createReport(newReport) {
   if (newReport.users_id) {
@@ -149,8 +137,7 @@ module.exports = {
   getAllFoods,
   getFoodById,
   getAllReports,
-  // getReportById,
-  getReportByUserId,
+  getReportById,
   createReport,
   getReportsToys,
   getReportsFoods,

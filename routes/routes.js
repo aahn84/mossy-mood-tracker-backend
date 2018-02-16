@@ -36,8 +36,7 @@ router.route('/reports')
   .post(mossyController.createReportCtrl)
 
 router.route('/reports/:id')
-  // .get(mossyController.getReportByIdCtrl)
-  .get(mossyController.getReportByUserIdCtrl)
+  .get(mossyController.getReportByIdCtrl)
 
 
 // REPORTS_TOYS

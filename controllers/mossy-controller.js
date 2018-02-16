@@ -80,35 +80,15 @@ const getAllReportsCtrl = (req, res, next) => {
     .catch(err => next(err))
 }
 
-const getReportByUserIdCtrl = (req, res, next) => {
-  let {first_name, last_name} = req.body
+const getReportByIdCtrl = (req, res, next) => {
+  const id = req.params.id
 
-  mossyModel.getReportByUserId(first_name, last_name)
+  mossyModel.getReportById(id)
     .then(report => {
       res.json(report)
     })
     .catch(err => next(err))
 }
-
-// const getReportByIdCtrl = (req, res, next) => {
-//   const id = req.params.id
-//
-//   mossyModel.getReportById(id)
-//     .then(report => {
-//       res.json(report)
-//     })
-//     .catch(err => next(err))
-// }
-
-// const createUserCtrl = (req, res, next) => {
-//   let {first_name, last_name} = req.body
-//
-//   mossyModel.createUser(first_name, last_name)
-//   .then(user => {
-//     res.json(user)
-//   })
-//   .catch(err => next(err))
-// }
 
 const createReportCtrl = (req, res, next) => {
   let newReport = req.body
@@ -159,8 +139,7 @@ module.exports = {
   getAllFoodsCtrl,
   getFoodByIdCtrl,
   getAllReportsCtrl,
-  // getReportByIdCtrl,
-  getReportByUserIdCtrl,
+  getReportByIdCtrl,
   createReportCtrl,
   getReportsToysCtrl,
   getReportsFoodsCtrl,
