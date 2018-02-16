@@ -17,6 +17,9 @@ exports.seed = function(knex, Promise) {
         {id: 10, mood: 'Indifferent', time_of_day: 'Evening', users_id: 5, toys_id: 4, foods_id: 4},
         {id: 11, mood: 'Indifferent', time_of_day: 'Evening', users_id: 2, toys_id: 4, foods_id: 4},
         {id: 12, mood: 'Indifferent', time_of_day: 'Morning', users_id: 1, toys_id: 4, foods_id: 4},
+        {id: 13, mood: 'Happy', time_of_day: 'Morning', users_id: 5, toys_id: 4, foods_id: 2},
+        {id: 14, mood: 'Sassy', time_of_day: 'Morning', users_id: 2, toys_id: 3, foods_id: 4},
+        {id: 15, mood: 'Sassy', time_of_day: 'Morning', users_id: 1, toys_id: 1, foods_id: 4},
       ]);
     })
     .then(function () {

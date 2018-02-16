@@ -113,6 +113,31 @@ function getReportsFoods() {
 // AVERAGE MOODS
 function getAverageMoods() {
   return knex('reports')
+    .select('time_of_day', 'mood')
+    .count('mood as mood_count')
+    .groupBy('mood', 'time_of_day')
+    .then(result => {
+      let moodCounts = {};
+
+      result.forEach(time => {
+        if(moodCounts[time.time_of_day]) {
+          if(moodCounts[time.time_of_day].count < time.mood_count) {
+            moodCounts[time.time_of_day] = {
+              mood: time.mood,
+              count: time.mood_count
+            }
+          }
+        } else {
+          moodCounts[time.time_of_day] = {
+            mood: time.mood,
+            count: time.mood_count
+          }
+        }
+      })
+
+      console.log(moodCounts)
+      return moodCounts;
+    })
 }
 
 

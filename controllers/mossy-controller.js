@@ -142,7 +142,7 @@ const getReportsFoodsCtrl = (req, res, next) => {
 
 // AVERAGE MOODS
 const getAverageMoodsCtrl = (req, res, next) => {
-  mossyModel.getAverageMoods(userId)
+  mossyModel.getAverageMoods()
     .then(reports => {
       res.json(reports)
     })
