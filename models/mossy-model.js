@@ -51,10 +51,6 @@ function getAllReports() {
   .orderBy('reports.id', 'asc')
 }
 
-getAllReports().then(res => {
-  console.log('res', res);
-})
-
 function getReportById(id) {
   return knex('reports')
     .where('id', id)
