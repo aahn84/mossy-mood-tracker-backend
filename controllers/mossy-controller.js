@@ -1,5 +1,10 @@
 const mossyModel = require('../models/mossy-model')
 
+// SLASH
+const getSlashCtrl = (req, res, next) => {
+  res.status(200).json({data: `Mossy Mood Database`})
+}
+
 // USERS
 const getAllUsersCtrl = (req, res, next) => {
   mossyModel.getAllUsers()
@@ -131,6 +136,7 @@ const getAverageMoodsCtrl = (req, res, next) => {
 
 
 module.exports = {
+  getSlashCtrl,
   getAllUsersCtrl,
   getUserByIdCtrl,
   createUserCtrl,

@@ -4,6 +4,10 @@ const router = express.Router()
 const mossyController = require('../controllers/mossy-controller')
 
 
+// SLASH ROUTE
+router.route('/')
+  .get(mossyController.getSlashCtrl)
+
 // USERS
 router.route('/users')
   .get(mossyController.getAllUsersCtrl)
