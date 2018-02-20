@@ -48,7 +48,8 @@ function getAllReports() {
   .join('toys', 'toys.id', '=', 'reports.toys_id')
   .join('foods', 'foods.id', '=', 'reports.foods_id')
   .select('reports.id','users.id as user_id', 'first_name', 'last_name', 'time_of_day', 'mood', 'toys.name as toys_id', 'foods.name as foods_id', 'reports.created_at')
-  .orderBy('reports.id', 'asc')
+  // .orderBy('reports.id', 'asc')
+  .orderBy('reports.id', 'desc')
 }
 
 function getReportById(id) {
