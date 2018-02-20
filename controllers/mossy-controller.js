@@ -2,7 +2,10 @@ const mossyModel = require('../models/mossy-model')
 
 // SLASH
 const getSlashCtrl = (req, res, next) => {
-  res.status(200).json({data: `Mossy Mood Database`})
+  .then(res => {
+    res.status(200).json({data: `Mossy Mood Database`})
+  })
+  .catch(err => next(err))
 }
 
 // USERS
